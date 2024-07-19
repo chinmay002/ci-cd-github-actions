@@ -31,8 +31,8 @@ jobs:
 
       - name: Run scri[t]
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          API_KEY: ${{ secrets.API_KEY }}
+          ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.API_KEY }}
           MLFLOW_TRACKING_URI: "http://127.0.0.1:5000"
 
         run: |
