@@ -20,8 +20,8 @@ s3_artifact_uri = f"s3://{s3_bucket}/mlflow"
 
 
 load_dotenv()
-access_key = os.getenv('ACCESS_KEY')
-secret_key = os.getenv('SECRET_KEY')
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
 os.environ["MLFLOW_S3_ENDPOINT_URL"] = "https://s3.amazonaws.com"
 
@@ -88,5 +88,5 @@ pkl_path = f"{model_details.name}_v{model_details.version}.pkl"
 joblib.dump(model, pkl_path)
 
 # Upload the .pkl file to S3
-s3_client = boto3.client("s3",aws_access_key_id=access_key,aws_secret_access_key= secret_key,region_name="us-east-1")
+s3_client = boto3.client("s3",aws_access_key_id=aws_access_key_id,aws_secret_access_key= aws_access_key_id,region_name="us-east-1")
 s3_client.upload_file(pkl_path, s3_bucket, f"models/{pkl_path}")
