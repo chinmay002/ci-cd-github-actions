@@ -4,3 +4,4 @@ pandas
 mlflow
 scikit-learn
 streamlit
+python-dotenv
