@@ -88,5 +88,5 @@ pkl_path = f"{model_details.name}_v{model_details.version}.pkl"
 joblib.dump(model, pkl_path)
 
 # Upload the .pkl file to S3
-s3_client = boto3.client("s3",aws_access_key_id=aws_access_key_id,aws_secret_access_key= aws_access_key_id,region_name="us-east-1")
+s3_client = boto3.client("s3",aws_access_key_id=aws_access_key_id,aws_secret_access_key=aws_secret_access_key,region_name="us-east-1")
 s3_client.upload_file(pkl_path, s3_bucket, f"models/{pkl_path}")
