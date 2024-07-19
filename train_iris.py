@@ -41,9 +41,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # Define the model
 model = LogisticRegression(max_iter=200)
-
+print("model read")
 # Start an MLflow run
 with mlflow.start_run() as run:
+    print('mlflow started')
     # Log parameters
     mlflow.log_param("max_iter", model.max_iter)
     mlflow.log_param("solver", model.solver)
@@ -58,9 +59,11 @@ with mlflow.start_run() as run:
     accuracy = accuracy_score(y_test, y_pred)
     mlflow.log_metric("accuracy", accuracy)
 
+    
+
     # Log the model
     mlflow.sklearn.log_model(model, "model")
-
+    print('logged model')
     model_uri = f"runs:/{run.info.run_id}/model"
     model_details = mlflow.register_model(model_uri, "Iris_LogisticRegression_Model")
 
