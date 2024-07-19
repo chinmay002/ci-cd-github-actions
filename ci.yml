@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Run scri[t]
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+
         run: |
           python train_iris.py
